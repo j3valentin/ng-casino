@@ -13,7 +13,9 @@ export class GamesService {
   private url: string = environment.endpoint + (environment.production ?
     'game-categories/{category}?brand=cherrycasino.desktop&locale=en' :
     'game-categories/{category}.json');
-  private gamesUrl = environment.endpoint + 'games.json';
+  private gamesUrl = environment.endpoint + (environment.production ?
+    'games?brand=cherrycasino.desktop&locale=en' :
+    'games.json' );
 
   constructor(private httpClient: HttpClient) {}
 

@@ -6,13 +6,13 @@ import { GamesComponent } from './games.component';
   imports: [
     RouterModule.forChild([
       {
-        path: ':category',
+        path: 'search/:searchTerm',
         component: GamesComponent
       },
-      // {
-      //   path: '/:category/:game',
-      //   component: GamesComponent
-      // }
+      {
+        path: ':category',
+        component: GamesComponent
+      }
     ]),
   ],
   exports: [RouterModule],

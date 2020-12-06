@@ -12,7 +12,7 @@ import { Platform } from '@angular/cdk/platform';
 })
 export class CategoriesComponent implements OnInit {
 
-  categories$: Observable<Category[] | undefined> = EMPTY;
+  categories$: Observable<Category[]> = EMPTY;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -24,15 +24,21 @@ export class CategoriesComponent implements OnInit {
     this.getCategories();
   }
 
-  getCategories() {
+  getCategories(): void {
     this.categories$ = this.categoriesService.getCategories();
   }
 
-  redirect(slug: string) {
-    this.router.navigate([slug]);
+  redirect(slug: string): void {
+    this.router.navigate([ '/', slug ]);
   }
 
-  isMobile() {
+  isMobile(): boolean {
     return this.platform.ANDROID || this.platform.IOS;
+  }
+
+  search(searchTerm: string): void {
+    if (searchTerm) {
+      this.router.navigate([ '/search', searchTerm ]);
+    }
   }
 }

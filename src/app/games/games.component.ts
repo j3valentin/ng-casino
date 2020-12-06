@@ -11,8 +11,8 @@ import { GamesService } from './games.service';
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: [ './games.component.scss' ],
-  animations: [ SlideInOutAnimation ]
+  styleUrls: ['./games.component.scss'],
+  animations: [SlideInOutAnimation]
 })
 export class GamesComponent implements OnInit, OnDestroy {
 
@@ -26,28 +26,33 @@ export class GamesComponent implements OnInit, OnDestroy {
     private router: Router
   ) { }
 
-  ngOnInit() {
-    let categorySlug = this.route.snapshot.params.category;
+  ngOnInit(): void {
+    const categorySlug = this.route.snapshot.params.category;
+    if (categorySlug) {
+      this.loadGamesByCategory(categorySlug);
+    } else {
+      this.loadGamesBySearchTerm(this.route.snapshot.params.searchTerm);
+    }
+  }
 
+  loadGamesByCategory(categorySlug: string): void {
     this.router.events.pipe(
       filter((res: any) => res != null && res.url && res.navigationTrigger != null),
       map((res: any) => res != null ? res.url.replace('/', '') : categorySlug),
       switchMap(res => this.gameService.getGamesByCategory(res)),
       takeUntil(this.unsubscribe)
-    )
-      .subscribe((gamesResponse: any) =>
-        this.games = gamesResponse
-      );
+    ).subscribe((games: any) => this.games = games);
 
     this.gameService.getGamesByCategory(categorySlug)
-      .subscribe((gamesResponse: Game[]) => {
-        this.games = gamesResponse;
-        console.log(gamesResponse);
-      });
+      .subscribe((games: Game[]) => this.games = games);
   }
 
+  loadGamesBySearchTerm(searchTerm: string): void {
+    this.gameService.searchGames(searchTerm)
+      .subscribe((games: Game[]) => this.games = games);
+  }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }

@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
   <ng-container *ngIf="isMobile(); else desktop">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu"
+            aria-label="icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <ng-container *ngFor="let category of categories$ | async">
-        <button mat-menu-item (click)="redirect(category.slug)" color="accent">
+        <button mat-menu-item color="accent"
+                (click)="redirect(category.slug)">
           {{category.name}}
         </button>
       </ng-container>
@@ -14,11 +16,19 @@
 
   <ng-template #desktop>
     <ng-container *ngFor="let category of categories$ | async">
-      <a mat-flat-button routerLink="{{category.slug}}" color="accent">
+      <a mat-flat-button color="accent"
+         [routerLink]="[ '/', category.slug ]">
         {{category.name}}
       </a>
       <mat-divider [inset]="true"></mat-divider>
     </ng-container>
   </ng-template>
+
+  <div>
+    <input #gameName />
+    <button (click)="search(gameName.value)">
+      Search
+    </button>
+  </div>
 
 </mat-toolbar>

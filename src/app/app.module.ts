@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoriesModule } from './categories/categories.module';
 import { MaterialModule } from './shared/material.module';
+import { RequestCache, RequestCacheWithMap } from './request-cache.service';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MaterialModule } from './shared/material.module';
     CategoriesModule,
     MaterialModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: RequestCache, useClass: RequestCacheWithMap }
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

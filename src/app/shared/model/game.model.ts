@@ -1,0 +1,43 @@
+import { CreatedAt } from './created-at.model';
+import { Links } from './links.model';
+import { Meta } from './meta.model';
+import { Thumbnails } from './thumbnails.model';
+
+export interface Game {
+  id: string;
+  slug: string;
+  background: string;
+  description: string;
+  game_stakes?: any;
+  height: string;
+  name: string;
+  width: string;
+  thumbnail: string;
+  url?: any;
+  created_at: CreatedAt;
+  screenshot?: any;
+  homepage_image?: any;
+  vendor: string;
+  vendor_name: string;
+  sub_vendor: string;
+  sub_vendor_name: string;
+  vendor_properties?: any;
+  meta: Meta;
+  enabled: boolean;
+  label: string;
+  cols: number;
+  rows: number;
+  pos_x?: any;
+  pos_y?: any;
+  volatility: any;
+  rating: any;
+  backgrounds: string[];
+  screenshots: any[];
+  thumbnails: Thumbnails;
+  jurisdiction: string;
+  login_required: boolean;
+  currency: string;
+  min_bet?: any;
+  max_bet?: number;
+  _links: Links;
+}

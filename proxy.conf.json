@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "changeOrigin": true,
+    "target": "https://api.com",
+    "pathRewrite": {
+      "/api": "/"
+    },
+    "logLevel": "debug"
+  }
+}

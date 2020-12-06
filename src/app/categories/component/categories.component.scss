@@ -1,0 +1,9 @@
+@import '/src/scss/utilities.scss';
+
+::ng-deep{
+    @include notPhone {
+        .mat-flat-button{
+            color:red
+                }
+    }
+}

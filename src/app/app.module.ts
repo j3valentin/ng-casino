@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoriesModule } from './categories/categories.module';
-import { MaterialModule } from './shared/material.module';
 import { RequestCache, RequestCacheWithMap } from './request-cache.service';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RequestCache, RequestCacheWithMap } from './request-cache.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     CategoriesModule,
-    MaterialModule
+    GraphQLModule,
+    HttpClientModule
   ],
   providers: [
     { provide: RequestCache, useClass: RequestCacheWithMap }

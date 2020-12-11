@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
+
 import { Category } from '../../shared/model';
 import { CategoriesService } from './../services/categories.service';
-import { Platform } from '@angular/cdk/platform';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-categories',
@@ -17,7 +18,7 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private router: Router,
-    private platform: Platform
+    private apollo: Apollo
   ) { }
 
   ngOnInit(): void {
@@ -25,20 +26,27 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategories(): void {
+    // this.apollo.watchQuery({
+    //   query: gql`
+    //     {
+    //       lobby {
+    //         categoryConnection {
+    //           edges {
+    //             node {
+    //               name
+    //               slug
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   `,
+    // }).valueChanges.subscribe(result => console.log(result));
+
     this.categories$ = this.categoriesService.getCategories();
   }
 
   redirect(slug: string): void {
-    this.router.navigate([ '/', slug ]);
-  }
-
-  isMobile(): boolean {
-    return this.platform.ANDROID || this.platform.IOS;
-  }
-
-  search(searchTerm: string): void {
-    if (searchTerm) {
-      this.router.navigate([ '/search', searchTerm ]);
-    }
+    this.router.navigate(['/', slug]);
   }
 }

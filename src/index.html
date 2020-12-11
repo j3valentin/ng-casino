@@ -1,15 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
+
 <head>
   <meta charset="utf-8">
-  <title>MyApp</title>
-  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="description" content="">
+  <title>My App</title>
+  <base href="/">
+
+  <!-- <meta name="theme-color" content="#7952b3"> -->
+
 </head>
-<body class="mat-typography">
-  <app-root></app-root>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <main class="px-3">
+      <app-root></app-root>
+    </main>
+
+    <footer class="mt-auto text-white-50 pt-3">
+      <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a
+          href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+    </footer>
+  </div>
+
 </body>
+
 </html>

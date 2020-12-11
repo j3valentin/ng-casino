@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { GamesComponent } from './games.component';
 import { GamesService } from './games.service';
 import { GamesRoutingModule } from './games-routing.module';
-import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,6 @@ import { MaterialModule } from '../shared/material.module';
   imports: [
     CommonModule,
     GamesRoutingModule,
-    MaterialModule
   ],
   providers: [
     GamesService

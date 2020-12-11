@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { CategoriesService } from './services/categories.service';
 import { CategoriesComponent } from './component/categories.component';
-import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { MaterialModule } from '../shared/material.module';
     CommonModule,
     HttpClientModule,
     RouterModule,
-    MaterialModule
   ],
   providers: [
     CategoriesService

@@ -1,13 +1,13 @@
-<ng-container *ngFor="let game of games">
-  <mat-card class="example-card" [@slideInOut]>
-    <mat-card-header>
-      <mat-card-title>{{game.name}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="{{game.thumbnail}}" alt="Photo of a game">
-    <mat-card-content>
-      <p>
-        {{game.description}}
-      </p>
-    </mat-card-content>
-  </mat-card>
-</ng-container>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col" *ngFor="let game of games">
+    <div class="card h-100">
+      <img alt="Photo of a game" class="card-img-top lazyload" loading="lazy"
+           src="{{game.thumbnail}}">
+      <div class="card-body bg-dark">
+        <h5 class="card-title">{{game.name}}</h5>
+        <p class="card-text">{{game.description}}</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div>
+  </div>
+</div>

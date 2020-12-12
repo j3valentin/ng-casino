@@ -1,7 +1,7 @@
 <header class="mb-auto py-1">
   <nav class="nav nav-masthead justify-content-center float-md-end">
     <a class="nav-link" aria-current="page"
-        *ngFor="let category of categories$ | async"
+        *ngFor="let category of categoriesGql$ | async"
         [routerLink]="[ '/', category.slug ]"
         routerLinkActive="active">
         {{category.name}}

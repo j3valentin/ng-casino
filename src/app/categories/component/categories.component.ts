@@ -4,7 +4,6 @@ import { EMPTY, Observable } from 'rxjs';
 
 import { Category } from '../../shared/model';
 import { CategoriesService } from './../services/categories.service';
-import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-categories',
@@ -14,11 +13,11 @@ import { Apollo, gql } from 'apollo-angular';
 export class CategoriesComponent implements OnInit {
 
   categories$: Observable<Category[]> = EMPTY;
+  categoriesGql$: Observable<Category[]> = EMPTY;
 
   constructor(
     private categoriesService: CategoriesService,
     private router: Router,
-    private apollo: Apollo
   ) { }
 
   ngOnInit(): void {
@@ -26,23 +25,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategories(): void {
-    // this.apollo.watchQuery({
-    //   query: gql`
-    //     {
-    //       lobby {
-    //         categoryConnection {
-    //           edges {
-    //             node {
-    //               name
-    //               slug
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   `,
-    // }).valueChanges.subscribe(result => console.log(result));
-
+    this.categoriesGql$ = this.categoriesService.getCategoriesGraphQL();
     this.categories$ = this.categoriesService.getCategories();
   }
 

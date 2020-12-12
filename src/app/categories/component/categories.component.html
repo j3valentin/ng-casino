@@ -2,7 +2,7 @@
   <nav class="nav nav-masthead justify-content-center float-md-end">
     <a class="nav-link" aria-current="page"
         *ngFor="let category of categoriesGql$ | async"
-        [routerLink]="[ '/', category.slug ]"
+        routerLink="/{{category.slug}}"
         routerLinkActive="active">
         {{category.name}}
     </a>

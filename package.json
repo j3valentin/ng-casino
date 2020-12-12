@@ -25,7 +25,6 @@
     "apollo-angular": "^2.1.0",
     "bootstrap": "^5.0.0-beta1",
     "graphql": "^15.0.0",
-    "masonry-layout": "^4.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

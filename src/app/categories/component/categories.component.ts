@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-
 import { Category } from '../../shared/model';
 import { CategoriesService } from './../services/categories.service';
+
 
 @Component({
   selector: 'app-categories',
@@ -17,7 +16,6 @@ export class CategoriesComponent implements OnInit {
 
   constructor(
     private categoriesService: CategoriesService,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +25,5 @@ export class CategoriesComponent implements OnInit {
   getCategories(): void {
     this.categoriesGql$ = this.categoriesService.getCategoriesGraphQL();
     this.categories$ = this.categoriesService.getCategories();
-  }
-
-  redirect(slug: string): void {
-    this.router.navigate(['/', slug]);
   }
 }
